@@ -46,9 +46,12 @@ def add_document_category(request):
 
 # 添加文档 POST
 def add_document(request):
+    file = request.FILES['file']
+    content = file.read()
+
     doc_name = Document()
     doc_name.name = request.POST.get('name')
-    doc_name.content = request.POST.get('file')
+    doc_name.content = content
     doc_name.cate = request.POST.get('doc_cate_id')
     doc_name.desc = request.POST.get('desc')
     doc_name.add_user = request.POST.get('add_user')
